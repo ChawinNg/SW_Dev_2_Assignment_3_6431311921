@@ -8,7 +8,9 @@ export default function Home() {
     <main>
       <Banner/>
       <div style={{margin:"20px",display:"flex", flexDirection:"row",alignContent:"space-around",justifyContent:"space-around",flexWrap:"wrap"}}>
-        <VaccineCard/>
+        <VaccineCard name="Chulalongkorn Hospital" imgsrc="/img/chula.jpg" />
+        <VaccineCard name="Rajavithi Hospital" imgsrc="/img/rajavithi.jpg" />
+        <VaccineCard name="Thammasat University Hospital" imgsrc="/img/thammasat.jpg" />
       </div>
     </main>
   )
