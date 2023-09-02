@@ -12,6 +12,7 @@ export default function BookingLayout({
   }) {
     return (
       <html lang="en">
+        <TopMenu/>
         <body className={inter.className}>{children}</body>
       </html>
     )
