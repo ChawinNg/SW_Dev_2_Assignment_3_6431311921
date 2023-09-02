@@ -26,5 +26,6 @@ export default function InteractiveCard({children} : {children:React.ReactNode})
         onMouseOut={(e)=>OnMouseAction(e)}>
             {children}
         </div>
+        
     );
 }

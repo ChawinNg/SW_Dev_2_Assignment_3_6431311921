@@ -13,6 +13,7 @@ export default function VaccineCard({name,imgsrc} : {name:string,imgsrc:string})
             </div>
             <div className='w-full h-[30%] p-[10px] text-black font-bold text-center my-5'>{name}</div>
         </InteractiveCard>
+        
     );
 }
 
