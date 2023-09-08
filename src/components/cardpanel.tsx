@@ -30,8 +30,8 @@ export default function CardPanel(){
                 delRating={(hos:string,value:string)=>dispatchRating({type:'remove', hosName:hos,rating:value})}
                 onRating={(hos:string,value:string)=>dispatchRating({type:'add', hosName:hos,rating:value})}/>
             </div>
-            <div className="w-full text-xl font-medium text-black text-center my-10 bg-slate-100 py-10">Rating:
-            {Array.from(ratingList).map((hos)=><div >{hos}</div>)}</div>
+            <div className="w-[100%] text-xl font-medium text-black text-center my-10 bg-slate-100 py-10 ">Rating:
+            {Array.from(ratingList).map((hos)=><div className="cursor-pointer hover:bg-neutral-200" onClick={()=>dispatchRating({type:'remove',hosName:hos[0],rating:hos[1]})}>{hos}</div>)}</div>
             
         </div>
     )
