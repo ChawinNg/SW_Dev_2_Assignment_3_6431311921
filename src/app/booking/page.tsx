@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Booking(){
     return (
-        <main className="w-[100%] flex flex-col bold items-center space-y-4 mt-[50px] bg-slate-100 rounded-lg space-x-5 w-fit px-10 py-5 justify center">
+        <main className="w-[100%] flex flex-col bold items-center space-y-4 mt-[50px] bg-slate-100 rounded-lg space-x-5 w-fit px-10 py-5 justify center mx-auto">
             <div className="text-xl font-medium text-black">Vaccine Reservation</div>
             <div className="w-fit space-y-5 mt-[50px]">
                 <div className="text-l text-left text-gray-600">Name</div>
@@ -21,7 +21,7 @@ export default function Booking(){
                 <DateReserve/>
             </div>
             
-            <button className="rounded-md text-black bg-white hover:bg-grey-500 px-5 py-4 text-2xl">Confirm</button>
+            <button className="rounded-md text-black bg-white hover:bg-grey-100 px-5 py-4 text-2xl">Confirm</button>
         </main>
     )
 }
