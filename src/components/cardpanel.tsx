@@ -18,7 +18,7 @@ export default function CardPanel(){
             default: return ratingList
         }
     }
-    const [ratingList, dispatchRating] = useReducer(ratingReducer, new Map<string,number>([["Chulalongkorn Hospital",4],["Rajavithi Hospital",4],["Thammasat University Hospital",4]]))
+    const [ratingList, dispatchRating] = useReducer(ratingReducer, new Map<string,number>())
     return (
         <div>
             <div style={{margin:"20px",display:"flex", flexDirection:"row",alignContent:"space-around",justifyContent:"space-around",flexWrap:"wrap"}}>
