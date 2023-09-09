@@ -2,36 +2,39 @@
 import { type } from "os";
 import VaccineCard from "./vaccinecard";
 import { Reducer, useReducer } from "react";
+import {useState} from 'react';
 
 export default function CardPanel(){
-    const ratingReducer = (ratingList:Map<string,string>, action:{type:string,hosName:string,rating:string})=>{
+    const ratingReducer = (ratingList:Map<string,number>, action:{type:string,hosName:string,rating:number})=>{
         switch(action.type) {
             case 'add': {
                 return new Map(ratingList.set(action.hosName,action.rating))
             }
             case 'remove': {
-                ratingList.delete(action.hosName)
-                return new Map(ratingList)
+                let tmp= new Map(ratingList)
+                tmp.delete(action.hosName)
+                return new Map(tmp)
             }
             default: return ratingList
         }
     }
-    const [ratingList, dispatchRating] = useReducer(ratingReducer, new Map<string,string>())
+    const [ratingList, dispatchRating] = useReducer(ratingReducer, new Map<string,number>())
+    const [rate,changeRate] = useState(0);
+    {console.log(ratingList)}
     return (
         <div>
             <div style={{margin:"20px",display:"flex", flexDirection:"row",alignContent:"space-around",justifyContent:"space-around",flexWrap:"wrap"}}>
-                <VaccineCard name="Chulalongkorn Hospital" imgsrc="/img/chula.jpg"
-                delRating={(hos:string,value:string)=>dispatchRating({type:'remove', hosName:hos,rating:value})}
-                onRating={(hos:string,value:string)=>dispatchRating({type:'add', hosName:hos,rating:value}) }/>
-                <VaccineCard name="Rajavithi Hospital" imgsrc="/img/rajavithi.jpg" 
-                delRating={(hos:string,value:string)=>dispatchRating({type:'remove', hosName:hos,rating:value})}
-                onRating={(hos:string,value:string)=>dispatchRating({type:'add', hosName:hos,rating:value})}/>
-                <VaccineCard name="Thammasat University Hospital" imgsrc="/img/thammasat.jpg" 
-                delRating={(hos:string,value:string)=>dispatchRating({type:'remove', hosName:hos,rating:value})}
-                onRating={(hos:string,value:string)=>dispatchRating({type:'add', hosName:hos,rating:value})}/>
+                <VaccineCard name="Chulalongkorn Hospital" imgsrc="/img/chula.jpg" rate={ratingList.get("Chulalongkorn Hospital") || 0}
+                dispatchRating={dispatchRating}/>
+                <VaccineCard name="Rajavithi Hospital" imgsrc="/img/rajavithi.jpg"
+                rate={ratingList.get("Rajavithi Hospital") || 0}
+                dispatchRating={dispatchRating}/>
+                <VaccineCard name="Thammasat University Hospital" imgsrc="/img/thammasat.jpg"
+                rate={ratingList.get("Thammasat University Hospital") || 0}
+                dispatchRating={dispatchRating}/>
             </div>
             <div className="w-[100%] text-xl font-medium text-black text-center my-10 bg-slate-100 py-10 ">Rating:
-            {Array.from(ratingList).map((hos)=><div className="cursor-pointer hover:bg-neutral-200" onClick={()=>dispatchRating({type:'remove',hosName:hos[0],rating:hos[1]})}>{hos}</div>)}</div>
+            {Array.from(ratingList).map((hos)=><div className="cursor-pointer hover:bg-neutral-200" onClick={()=>{dispatchRating({type:'remove',hosName:hos[0],rating:hos[1]})}}>{hos[0]} : {hos[1]}</div>)}</div>
             
         </div>
     )
