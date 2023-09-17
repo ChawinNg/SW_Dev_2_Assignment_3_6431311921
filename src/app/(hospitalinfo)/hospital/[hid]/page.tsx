@@ -8,7 +8,6 @@ export default function HospitalDetailPage({params}:{params:{hid:string}}){
     hosRepo.set("003",{name:"Thammasat University Hospital", img:"/img/thammasat.jpg"})
     return (
         <main className="text-center my-10">
-            {/* <h1 className='text-xl font-medium bold'>Hospital ID {params.hid}</h1> */}
             <div className="flex flex-row justify center bg-slate-100 px-10 py-5">
                 <Image src={(hosRepo.get(params.hid)).img} 
                 alt="Hospital Picture"
