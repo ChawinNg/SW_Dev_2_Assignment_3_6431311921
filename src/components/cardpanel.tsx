@@ -4,8 +4,21 @@ import VaccineCard from "./vaccinecard";
 import { Reducer, useReducer } from "react";
 import {useState} from 'react';
 import Link from "next/link";
+import { useRef,useEffect } from "react";
+import getHospitals from "@/libs/getHospitals";
 
 export default function CardPanel(){
+
+    const [hosResponse, setHosResponse] = useState(null)
+
+    useEffect(()=>{
+        const fetchData = async () =>{
+            const hoss = await getHospitals()
+            setHosResponse(hoss)
+        }
+        fetchData()
+    },[])
+
     const ratingReducer = (ratingList:Map<string,number>, action:{type:string,hosName:string,rating:number})=>{
         switch(action.type) {
             case 'add': {
@@ -20,16 +33,18 @@ export default function CardPanel(){
         }
     }
     const [ratingList, dispatchRating] = useReducer(ratingReducer, new Map<string,number>())
-    const hospitalRepo = [{hid:"001",name:"Chulalongkorn Hospital", img:"/img/chula.jpg"},
-                {hid:"002",name:"Rajavithi Hospital", img:"/img/rajavithi.jpg"},
-                {hid:"003",name:"Thammasat University Hospital", img:"/img/thammasat.jpg"}]
+    // const hospitalRepo = [{hid:"001",name:"Chulalongkorn Hospital", img:"/img/chula.jpg"},
+    //             {hid:"002",name:"Rajavithi Hospital", img:"/img/rajavithi.jpg"},
+    //             {hid:"003",name:"Thammasat University Hospital", img:"/img/thammasat.jpg"}]
     
+    if(!hosResponse) return (<p>Hospital Panel is Loading...</p>)
+
     return (
         <div>
             <div style={{margin:"20px",display:"flex", flexDirection:"row",alignContent:"space-around",justifyContent:"space-around",flexWrap:"wrap"}}>
-                {hospitalRepo.map((hosItem)=>(
+                {hosResponse.data.map((hosItem)=>(
                 <Link href={`/hospital/${hosItem.hid}`}>
-                <VaccineCard name={hosItem.name} imgsrc={hosItem.img} rate={ratingList.get(hosItem.name) || 0}
+                <VaccineCard name={hosItem.name} imgsrc={hosItem.pictuture} rate={ratingList.get(hosItem.name) || 0}
                 dispatchRating={dispatchRating}/>
                 </Link>
                 ))}

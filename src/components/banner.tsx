@@ -19,7 +19,7 @@ export default function Banner(){
                 <h3>"AstraZeneca are ready for you"</h3>
             </div>
             <button className="bg-white text-cyan-600 border border-cyan-600
-            font-semibold py-2 px-2 m-2 rounded z-30 absolute bottom-0 right-0
+            font-semibold py-2 px-2 my-5 mx-10 rounded z-30 absolute bottom-0 right-0
             hover:bg-cyan-600 hover:text-white hover:border-transparent"
             onClick={(e)=>{e.stopPropagation();router.push('/hospital')}}>Select Your Hospital NOW</button>
         </div>
