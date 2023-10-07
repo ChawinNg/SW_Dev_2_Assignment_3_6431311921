@@ -12,9 +12,6 @@ export default function Hospital({params}:{params:{id:string}}){
             <Suspense fallback={<p>Loading....<LinearProgress/></p>}>
             <HospitalCatalog hosJson={hospitals}/>
             </Suspense>
-
-            <hr className='my-10'/>
-            <h1 className='text-xl font-medium'>Try</h1>
         </main>
     )
 }
