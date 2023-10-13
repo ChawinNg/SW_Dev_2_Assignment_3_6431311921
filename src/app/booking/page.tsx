@@ -1,10 +1,19 @@
 import DateReserve from "@/components/BookingDateReserve";
-import Image from "next/image";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import getUserProfile from "@/libs/getUserProfile";
 
-export default function Booking(){
+export default async function Booking(){
+
+    const session = await getServerSession(authOptions)
+    if(!session || !session.user.token) return null
+
+    const profile = await getUserProfile(session.user.token)
+    var createAt = new Date(profile.data.createdAt)
+
     return (
         <main className="w-[100%] flex flex-col bold items-center space-y-4 mt-[50px] bg-slate-100 rounded-lg space-x-5 w-fit px-10 py-5 justify center mx-auto">
-            <div className="text-xl font-medium text-black">Vaccine Reservation</div>
+            {/* <div className="text-xl font-medium text-black">Vaccine Reservation</div>
             <div className="w-fit space-y-5 mt-[50px]">
                 <div className="text-l text-left text-gray-600">Name</div>
                 <input type="text" id="name" placeholder="Your Name" className="rounded ring-1 ring-inset ring-gray-400 text-md leading-6 
@@ -21,7 +30,15 @@ export default function Booking(){
                 <DateReserve/>
             </div>
             
-            <button className="rounded-md text-black bg-white hover:bg-grey-100 px-5 py-4 text-2xl">Confirm</button>
+            <button className="rounded-md text-black bg-white hover:bg-grey-100 px-5 py-4 text-2xl">Confirm</button> */}
+        
+            <div className='text-2xl'>User Profile</div>
+            <table className='table-auto border-separate border-spacing-2'><tbody>
+                <tr><td>Name: {profile.data.name}</td></tr>
+                <tr><td>Email: {profile.data.email}</td></tr>
+                <tr><td>Tel: {profile.data.tel}</td></tr>
+                <tr><td>Member Since:</td><td>{createAt.toString()}</td></tr>
+            </tbody></table>
         </main>
     )
 }
