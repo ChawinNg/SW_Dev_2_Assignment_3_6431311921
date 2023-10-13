@@ -6,7 +6,8 @@ export default async function HospitalCatalog({hosJson}:{hosJson:Object}){
     return (
         <>
         Explore {hosJsonReady.count} models in our catalog
-        <div style={{margin:"20px",display:"flex", flexDirection:"row",alignContent:"space-around",justifyContent:"space-around",flexWrap:"wrap"}}>
+        <div style={{margin:"20px",display:"flex", flexDirection:"row",alignContent:"space-around"
+        ,justifyContent:"space-around",flexWrap:"wrap"}}>
                 {hosJsonReady.data.map((hosItem:Object)=>(
                 <Link href={`/hospital/${hosItem.id}`}>
                 <VaccineCard name={hosItem.name} imgsrc={hosItem.picture}

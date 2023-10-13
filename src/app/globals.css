@@ -94,6 +94,10 @@ body {
   margin-top: 50px;
 }
 
+.background {
+  background-image: url("/img/vaccine2.jpg");
+}
+
 a {
   color: inherit;
   text-decoration: none;
