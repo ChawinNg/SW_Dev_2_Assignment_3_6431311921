@@ -31,7 +31,6 @@ export default async function Booking(){
             </div>
             
             <button className="rounded-md text-black bg-white hover:bg-grey-100 px-5 py-4 text-2xl">Confirm</button> */}
-        
             <div className='text-2xl'>User Profile</div>
             <table className='table-auto border-separate border-spacing-2'><tbody>
                 <tr><td>Name: {profile.data.name}</td></tr>
