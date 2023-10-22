@@ -15,21 +15,26 @@ export default async function TopMenu(){
             alt='logo' width={0} height={0} sizes="100vh"/>
             <TopMenuItem title='Booking' pageRef='/booking'/>
             <TopMenuItem title='Home' pageRef='/'/>
-
+            <div className='absolute left-0 flex mx-6'>
+            
             {
+                
                 session? <Link href="/api/auth/signout">
-                    <div className='w-30 h-10 absolute center my-3 bg-cyan-100 font-sans text-xl 
-        text-black font-bold rounded-md shadow-xl pt-1 mx-8 px-2 flex item-center left-0'>
+                    <div className='w-30 h-10 center my-3 bg-cyan-100 font-sans text-xl 
+        text-black font-bold rounded-md shadow-xl pt-1  px-2 flex item-center'>
                     Sign-Out of {session.user?.name}
                     </div>
                     </Link>
                 : <Link href="/api/auth/signin">
-                    <div className='w-30 h-10 absolute center my-3 bg-cyan-100 font-sans text-xl 
-        text-black font-bold rounded-md shadow-xl pt-1 mx-8 px-2 flex item-center left-0'>
+                    <div className='w-30 h-10 center my-3 bg-cyan-100 font-sans text-xl 
+        text-black font-bold rounded-md shadow-xl pt-1 px-2 flex item-center'>
                     Sign-In
                     </div>
                 </Link>
             }
+            <TopMenuItem title='My Booking' pageRef='/mybooking'/>
+        </div>
+        
         </div>
     )
 }
