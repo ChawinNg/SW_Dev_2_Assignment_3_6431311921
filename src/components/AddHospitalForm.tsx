@@ -34,7 +34,8 @@ export default function AddHospitalForm(){
         redirect("/hospital")
     }
     return (
-        <form action={addHospital} className="w-[100%] flex flex-col bold items-center space-y-4 mt-[50px] bg-slate-100 rounded-lg space-x-5 px-10 py-5 justify center mx-auto">
+        <form action={addHospital} className="w-[100%] flex flex-col bold items-center space-y-4 mt-[50px] bg-slate-100 
+        rounded-lg space-x-5 px-10 py-5 justify center mx-auto">
             <div className="text-xl text-blue-700">Add Hospital</div>
             <div className="flex items-center w-1/2 my-2">
                 <label className="w-auto block text-gray-700 pr-4" htmlFor="hosName">

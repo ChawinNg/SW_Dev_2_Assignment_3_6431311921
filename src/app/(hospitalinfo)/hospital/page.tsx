@@ -9,9 +9,6 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AddHospitalForm from '@/components/AddHospitalForm'
 
 export default async function Hospital({params}:{params:{id:string}}){
-    
-
-
     const hospitals = getHospitals()
     const session = await getServerSession(authOptions)
     if(!session || !session.user.token) return null
@@ -24,17 +21,14 @@ export default async function Hospital({params}:{params:{id:string}}){
             <h1 className='text-2xl font-bold'>Select Your Hospital</h1>
             <Suspense fallback={<p>Loading....<LinearProgress/></p>}>
             <HospitalCatalog hosJson={hospitals}/>
-            </Suspense>
-
+            </Suspense> 
             {
                 (profile.data.role=="admin")?
                 <div className='my-1 items-center'>
                     <AddHospitalForm></AddHospitalForm>
-                </div>
-                
+                </div>   
                 : null
-            }
-            
+            }  
         </main>
     )
 }
