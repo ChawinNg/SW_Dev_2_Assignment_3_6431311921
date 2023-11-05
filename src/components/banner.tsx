@@ -16,7 +16,7 @@ export default function Banner(){
             <Image src={cover[index%4]}
             alt='cover'
             fill={true}
-            objectFit='cover'/>
+            className='object-cover'/>
             <div className="relative top-32 z-20 text-center text-4xl">
                 <h1>Covid-19 Vaccinate</h1>
                 <h3>"AstraZeneca are ready for you"</h3>
