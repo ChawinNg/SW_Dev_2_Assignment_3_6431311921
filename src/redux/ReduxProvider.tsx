@@ -13,7 +13,6 @@ export default function ReduxProvider({children}:{children:React.ReactNode}){
             <PersistGate loading={null} persistor={reduxPersistor}>
             {children}
             </PersistGate>
-            
         </ReactReduxProvider>
     )
 }

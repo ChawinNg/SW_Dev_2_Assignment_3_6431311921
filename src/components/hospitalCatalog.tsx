@@ -1,8 +1,22 @@
+import { Interface } from "readline";
 import VaccineCard from "./vaccinecard";
 import Link from "next/link";
 
+// interface hosInfo{
+//     data:hosItem[]
+//     count:number
+// }
+
+// interface hosItem{
+//     id:string
+//     name:string
+//     picture:string
+// }
+    
+    
 export default async function HospitalCatalog({hosJson}:{hosJson:Object}){
     const hosJsonReady = await hosJson
+
     return (
         <>
         Explore {hosJsonReady.count} models in our catalog
